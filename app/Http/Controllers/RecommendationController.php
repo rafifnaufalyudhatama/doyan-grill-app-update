@@ -43,8 +43,8 @@ class RecommendationController extends Controller
             return $b['similarity'] <=> $a['similarity'];
         });
 
-        // Get Top 5
-        $topRecommendations = array_slice($recommendations, 0, 5);
+        // Get Top 3
+        $topRecommendations = array_slice($recommendations, 0, 3);
         $topProducts = array_column($topRecommendations, 'product');
 
         return view('recommendation.index', compact('topProducts', 'budget'));

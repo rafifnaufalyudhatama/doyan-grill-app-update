@@ -29,6 +29,27 @@
                 {{ strtoupper($order->status) }}
             </span>
         </div>
+        <div style="margin-top: 2rem;">
+            <h4 style="color: #888; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.8rem;">Metode Pembayaran</h4>
+            <div style="font-weight: 700; color: #333; font-size: 1.1rem;">
+                @php
+                    $paymentMethod = $order->payment_method;
+                    if ($paymentMethod === 'COD') {
+                        echo 'Bayar di Tempat (COD) - Bayar saat barang diterima';
+                    } elseif ($paymentMethod === 'Transfer Bank') {
+                        echo 'Transfer Bank (BCA, Mandiri, BRI, BNI)';
+                    } elseif ($paymentMethod === 'E-Wallet') {
+                        echo 'E-Wallet (Dana, Gopay, Shopeepay)';
+                    } elseif (in_array($paymentMethod, ['BCA', 'BNI', 'BRI', 'Mandiri'])) {
+                        echo 'Transfer Bank ' . $paymentMethod;
+                    } elseif (in_array($paymentMethod, ['GoPay', 'Dana', 'Shopeepay'])) {
+                        echo 'E-Wallet ' . $paymentMethod;
+                    } else {
+                        echo $paymentMethod;
+                    }
+                @endphp
+            </div>
+        </div>
     </div>
 
     <table style="width: 100%; border-collapse: collapse; margin-bottom: 3rem;">

@@ -80,6 +80,7 @@ class CartController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
             'address' => 'required|string',
             'payment_method' => 'required|string'
         ]);
@@ -100,6 +101,7 @@ class CartController extends Controller
                 'user_id' => auth()->id(),
                 'customer_name' => $request->name,
                 'customer_phone' => $request->phone,
+                'customer_email' => $request->email,
                 'customer_address' => $request->address,
                 'total_price' => $totalPrice,
                 'payment_method' => $request->payment_method,

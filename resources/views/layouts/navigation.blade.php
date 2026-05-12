@@ -18,9 +18,11 @@
                         </x-nav-link>
 
                         @if(Auth::user()->role === 'admin')
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-nav-link>
+                            <div class="flex items-center ms-4">
+                                <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold rounded-lg shadow-md shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-gauge-high"></i> Panel Admin
+                                </a>
+                            </div>
                         @endif
                     @endauth
                 </div>
@@ -106,9 +108,11 @@
                 </x-responsive-nav-link>
 
                 @if(Auth::user()->role === 'admin')
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-responsive-nav-link>
+                    <div class="px-4 py-2">
+                        <a href="{{ route('admin.dashboard') }}" class="w-full text-center block px-4 py-2.5 bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold rounded-lg shadow-md flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gauge-high"></i> Panel Admin
+                        </a>
+                    </div>
                 @endif
                 <x-responsive-nav-link :href="route('cart.index')">
                     {{ __('Keranjang') }} ({{ $cartCount }})

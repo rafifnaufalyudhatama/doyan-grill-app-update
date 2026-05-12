@@ -311,6 +311,12 @@ return [
         ],
 
         [
+            'text' => 'Kembali ke Website',
+            'url'  => '/',
+            'icon' => 'fas fa-fw fa-home',
+            'classes' => 'text-orange',
+        ],
+        [
             'text' => 'Dashboard',
             'url'  => 'admin/dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
