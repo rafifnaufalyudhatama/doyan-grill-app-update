@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Doyan Frozen & Grill') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -24,9 +25,7 @@
         
         <div class="mb-8 text-center">
             <a href="/" class="inline-flex items-center gap-3 group">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-orange-600 to-red-500 flex items-center justify-center text-white text-3xl shadow-lg shadow-orange-500/40 group-hover:scale-105 transition-transform duration-300">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                </div>
+                <x-application-logo class="w-16 h-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-md" />
                 <div class="text-left">
                     <h1 class="text-3xl font-black text-gray-800 tracking-tight leading-none group-hover:text-orange-600 transition-colors">Doyan Grill</h1>
                     <p class="text-sm font-medium text-orange-500 uppercase tracking-widest">Frozen & Grill</p>

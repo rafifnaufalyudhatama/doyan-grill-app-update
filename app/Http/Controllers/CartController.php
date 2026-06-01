@@ -14,6 +14,10 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login atau buat akun terlebih dahulu untuk melihat keranjang.');
+        }
+
         $cart = $this->getCart();
         return view('cart.index', compact('cart'));
     }
@@ -35,6 +39,10 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login atau buat akun terlebih dahulu untuk memasukkan produk ke keranjang.');
+        }
+
         $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1'
@@ -66,6 +74,10 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login atau buat akun terlebih dahulu untuk melakukan pemesanan.');
+        }
+
         $cart = $this->getCart();
         
         if (!$cart || $cart->items->isEmpty()) {
@@ -77,6 +89,10 @@ class CartController extends Controller
 
     public function processCheckout(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login atau buat akun terlebih dahulu untuk melakukan pemesanan.');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',

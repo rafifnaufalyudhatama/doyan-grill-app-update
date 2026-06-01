@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,8 +28,8 @@
             <!-- Custom Premium Navbar -->
             <nav class="navbar animate-blur-in">
                 <a href="{{ route('home') }}" class="navbar-brand">
-                    <i class="fas fa-fire-alt"></i>
-                    <span>Doyan Grill</span>
+                    <img src="{{ asset('images/logo.png') }}" alt="Doyan Frozen & Grill Logo" class="h-10 w-auto object-contain drop-shadow-sm">
+                    <span>Doyan Frozen & Grill</span>
                 </a>
 
                 <div class="nav-links">

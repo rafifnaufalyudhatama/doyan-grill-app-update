@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Doyan Frozen & Grill Admin',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,9 +63,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Doyan</b> Frozen & Grill',
+    'logo_img' => 'images/logo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3 bg-white',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin/dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -320,16 +320,19 @@ return [
             'text' => 'Dashboard',
             'url'  => 'admin/dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
+            'active' => ['admin/dashboard'],
         ],
         [
             'text' => 'Products & Stock',
             'url'  => 'admin/products',
             'icon' => 'fas fa-fw fa-box',
+            'active' => ['admin/products', 'admin/products/*'],
         ],
         [
             'text' => 'Orders',
             'url'  => 'admin/orders',
             'icon' => 'fas fa-fw fa-shopping-cart',
+            'active' => ['admin/orders', 'admin/orders/*'],
         ],
     ],
 
