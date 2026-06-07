@@ -10,8 +10,8 @@
         </div>
         <div style="text-align: right;">
             <h2 style="margin: 0; color: #333;">Doyan Frozen & Grill</h2>
-            <p style="color: #666; margin: 0.2rem 0;">Pekanbaru, Riau</p>
-            <p style="color: #666; margin: 0;">0812-XXXX-XXXX</p>
+            <p style="color: #666; margin: 0.2rem 0;">Madukoro, Kajoran, Magelang RT 006 / RW 001</p>
+            <p style="color: #666; margin: 0;">0856-0058-9155</p>
         </div>
     </div>
 
