@@ -42,7 +42,7 @@
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 
-                <div class="flex items-center gap-6 mb-8 bg-white border border-gray-100 p-4 rounded-2xl shadow-sm w-max">
+                <div class="flex items-center flex-wrap sm:flex-nowrap gap-4 sm:gap-6 mb-8 bg-white border border-gray-100 p-4 rounded-2xl shadow-sm w-full sm:w-max">
                     <span class="font-bold text-gray-700">Kuantitas</span>
                     <div class="flex items-center bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
                         <button type="button" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-orange-600 transition-colors active:scale-95" onclick="document.getElementById('qty').value = Math.max(1, parseInt(document.getElementById('qty').value) - 1)">
