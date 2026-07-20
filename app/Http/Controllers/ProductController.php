@@ -8,10 +8,17 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('home', compact('products'));
+        $search = $request->input('search');
+        
+        if ($search) {
+            $products = Product::where('name', 'like', '%' . $search . '%')->get();
+        } else {
+            $products = Product::all();
+        }
+        
+        return view('home', compact('products', 'search'));
     }
 
     public function show($id)

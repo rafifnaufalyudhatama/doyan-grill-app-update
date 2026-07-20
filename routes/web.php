@@ -42,6 +42,7 @@ Route::post('/checkout', [CartController::class, 'processCheckout'])->name('cart
 Route::patch('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeItem'])->name('cart.remove');
 Route::get('/order/invoice/{id}', [CartController::class, 'invoice'])->name('order.invoice');
+Route::get('/order/history', [CartController::class, 'history'])->name('order.history')->middleware('auth');
 
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {

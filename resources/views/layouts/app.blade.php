@@ -39,6 +39,7 @@
                     <a href="{{ route('home') }}" class="hover:text-orange-500 transition-colors font-semibold text-gray-800">Home</a>
                     @auth
                         <a href="{{ route('recommendation.index') }}" class="hover:text-orange-500 transition-colors font-semibold text-gray-800">Rekomendasi</a>
+                        <a href="{{ route('order.history') }}" class="hover:text-orange-500 transition-colors font-semibold text-gray-800">Riwayat Pesanan</a>
                         @if(Auth::user()->role === 'admin')
                             <a href="{{ route('admin.dashboard') }}" class="hover:text-orange-500 transition-colors font-semibold text-gray-800">Panel Admin</a>
                         @endif

@@ -184,4 +184,18 @@ class CartController extends Controller
 
         return back()->with('success', 'Produk dihapus dari keranjang!');
     }
+
+    public function history()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu untuk melihat riwayat pesanan.');
+        }
+
+        $orders = Order::with('items.product')
+            ->where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('order.history', compact('orders'));
+    }
 }

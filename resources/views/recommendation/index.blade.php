@@ -14,7 +14,7 @@
             @csrf
             <div class="mb-6">
                 <label for="budget" class="block font-bold text-gray-700 mb-2">Masukkan Budget (Rp)</label>
-                <input type="number" id="budget" name="budget" class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl text-lg focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all" required placeholder="Contoh: 100000" value="{{ isset($budget) ? $budget : '' }}">
+                <input type="text" id="budget" name="budget" class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl text-lg focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all placeholder:text-gray-500 placeholder:opacity-60" required placeholder="Contoh : 15000 - 500000" value="{{ isset($budget) ? $budget : '' }}">
             </div>
             <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold text-lg shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5 transition-all duration-300">Cari Rekomendasi</button>
         </form>
