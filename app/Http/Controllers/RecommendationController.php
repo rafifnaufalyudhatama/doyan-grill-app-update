@@ -21,15 +21,17 @@ class RecommendationController extends Controller
         $recommendations = [];
 
         foreach ($products as $product) {
-            // Pembuatan Vektor Sederhana untuk Perhitungan Kemiripan (Content-Based Filtering)
+            // Pembuatan Vektor Sederhana untuk Perhitungan Kemiripan 
+            // (Content-Based Filtering)
             // Vektor User: [budget, konstanta]
-            // Vektor Produk: [harga produk, konstanta]
             $userVector = [$budget, 10000];
+            // Vektor Produk: [harga produk, konstanta]
             $productVector = [$product->price, 10000];
-
+            // Menghitung skor kemiripan antara vektor user dan vektor produk
             $similarity = $this->cosineSimilarity($userVector, $productVector);
             
-            // Hanya merekomendasikan produk yang harganya kurang dari atau sama dengan budget
+            // Hanya merekomendasikan produk yang harganya kurang dari atau 
+            // sama dengan budget
             if ($product->price <= $budget) {
                 $recommendations[] = [
                     'product' => $product,
@@ -38,7 +40,8 @@ class RecommendationController extends Controller
             }
         }
 
-        // Mengurutkan hasil rekomendasi dari tingkat kemiripan paling tinggi (Descending)
+        // Mengurutkan hasil rekomendasi dari tingkat kemiripan 
+        // paling tinggi (Descending)
         usort($recommendations, function ($a, $b) {
             return $b['similarity'] <=> $a['similarity'];
         });
