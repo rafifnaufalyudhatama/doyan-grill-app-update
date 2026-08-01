@@ -20,6 +20,23 @@
             <h3 class="text-xl font-bold text-gray-800 mb-6 pb-4 border-b border-gray-100 flex items-center gap-2">
                 <i class="fa-solid fa-user text-orange-500"></i> Informasi Pembeli
             </h3>
+            @if(isset($savedDetails) && $savedDetails->count() > 0)
+                <div class="mb-6">
+                    <label for="saved_detail" class="block font-bold text-gray-700 mb-2">Pilih Data Tersimpan</label>
+                    <select id="saved_detail" class="w-full px-5 py-3 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                        <option value="">-- Pilih Data Baru atau Tersimpan --</option>
+                        @foreach($savedDetails as $detail)
+                            <option value="{{ $detail->id }}" 
+                                data-name="{{ $detail->name }}" 
+                                data-phone="{{ $detail->phone }}" 
+                                data-email="{{ $detail->email }}" 
+                                data-address="{{ $detail->address }}">
+                                {{ $detail->name }} - {{ $detail->phone }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
             <form id="checkout-form" action="{{ route('cart.process') }}" method="POST">
                 @csrf
                 <div class="space-y-5 mb-8">
@@ -45,6 +62,10 @@
                     <div>
                         <label for="address" class="block font-bold text-gray-700 mb-2">Alamat lengkap</label>
                         <textarea id="address" name="address" class="w-full px-5 py-3 border-2 border-gray-100 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all" rows="4" required placeholder="Masukkan alamat pengiriman secara detail"></textarea>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="save_detail" name="save_detail" value="1" class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500">
+                        <label for="save_detail" class="text-gray-700 text-sm font-medium cursor-pointer">Simpan data ini untuk pembelian selanjutnya</label>
                     </div>
                 </div>
 
@@ -164,4 +185,30 @@
 
     </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedDetailSelect = document.getElementById('saved_detail');
+        if (savedDetailSelect) {
+            savedDetailSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const nameInput = document.getElementById('name');
+                const phoneInput = document.getElementById('phone');
+                const emailInput = document.getElementById('email');
+                const addressInput = document.getElementById('address');
+                
+                if (this.value) {
+                    nameInput.value = selectedOption.dataset.name;
+                    phoneInput.value = selectedOption.dataset.phone;
+                    emailInput.value = selectedOption.dataset.email;
+                    addressInput.value = selectedOption.dataset.address;
+                } else {
+                    nameInput.value = '';
+                    phoneInput.value = '';
+                    emailInput.value = '';
+                    addressInput.value = '';
+                }
+            });
+        }
+    });
+</script>
 @endsection

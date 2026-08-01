@@ -8,6 +8,7 @@ use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\BuyerDetail;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -84,7 +85,9 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('error', 'Keranjang Anda kosong!');
         }
 
-        return view('cart.checkout', compact('cart'));
+        $savedDetails = BuyerDetail::where('user_id', auth()->id())->get();
+
+        return view('cart.checkout', compact('cart', 'savedDetails'));
     }
 
     public function processCheckout(Request $request)
@@ -98,8 +101,19 @@ class CartController extends Controller
             'phone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
             'address' => 'required|string',
-            'payment_method' => 'required|string'
+            'payment_method' => 'required|string',
+            'save_detail' => 'nullable'
         ]);
+
+        if ($request->has('save_detail')) {
+            BuyerDetail::firstOrCreate([
+                'user_id' => auth()->id(),
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'address' => $request->address,
+            ]);
+        }
 
         $cart = $this->getCart();
 
